@@ -25,6 +25,7 @@ public class AcessingDataJpaApplication {
     public CommandLineRunner runner(UserRepository repository) {
         return (args) -> {
             repository.save(new User("user", "user@user.com", "password"));
+            repository.save(new User("anotherUser", "anotherUser@usercom", "password"));
 
             log.info("Usuários cadastrados:");
             for (User user : repository.findAll()) {
