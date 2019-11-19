@@ -28,19 +28,22 @@ public class AcessingDataJpaApplication {
 
             log.info("Usuários cadastrados:");
             for (User user : repository.findAll()) {
-                log.info(user.toString());
+                log.info(user.getName());
+                log.info(user.getEmail());
             }
             log.info("");
 
             log.info("Usuário numero 1:");
-            Optional<User> user = repository.findById(1L);
-            log.info(user.toString());
+            User user = repository.findById(1L);
+            log.info(user.getName());
+            log.info(user.getEmail());
             log.info("");
 
             log.info("Usuário com o nome user:");
             for (User user1 : repository.findByName("user")) {
-				log.info(user1.toString());
-			}
+                log.info(user1.getName());
+                log.info(user.getEmail());
+            }
             log.info("");
         };
     }
