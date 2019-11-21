@@ -13,11 +13,12 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	runtimeOnly 'com.h2database:h2'
-	compile 'org.springframework:spring-webmvc:4.1.6.RELEASE'
-	implementation 'org.springframework:spring-webmvc:4.0.0.RELEASE'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+
+	compile 'org.springframework.boot:spring-boot-starter-web'
+	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+	compile 'com.h2database:h2'
+
+	testCompile('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 }
