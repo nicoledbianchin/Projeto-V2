@@ -12,38 +12,8 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class AcessingDataJpaApplication {
 
-    private static final Logger log = LoggerFactory.getLogger(AcessingDataJpaApplication.class);
-
     public static void main(String[] args) {
 
         SpringApplication.run(AcessingDataJpaApplication.class, args);
-    }
-
-    @Bean
-    public CommandLineRunner runner(UserRepository repository) {
-        return (args) -> {
-            repository.save(new User("user", "user@user.com", "password"));
-            repository.save(new User("anotherUser", "anotherUser@usercom", "password"));
-
-            log.info("Usuários cadastrados:");
-            for (User user : repository.findAll()) {
-                log.info(user.getName());
-                log.info(user.getEmail());
-            }
-            log.info("");
-
-            log.info("Usuário numero 1:");
-            User user = repository.findById(1L);
-            log.info(user.getName());
-            log.info(user.getEmail());
-            log.info("");
-
-            log.info("Usuário com o nome user:");
-            for (User user1 : repository.findByName("user")) {
-                log.info(user1.getName());
-                log.info(user.getEmail());
-            }
-            log.info("");
-        };
     }
 }
