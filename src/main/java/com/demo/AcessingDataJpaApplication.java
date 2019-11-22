@@ -12,8 +12,6 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class AcessingDataJpaApplication {
 
-    private static final Logger log = LoggerFactory.getLogger(AcessingDataJpaApplication.class);
-
     public static void main(String[] args) {
 
         SpringApplication.run(AcessingDataJpaApplication.class, args);

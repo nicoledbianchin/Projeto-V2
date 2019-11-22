@@ -33,8 +33,6 @@ public class UserService {
     }
 
     public List<User> getAll() {
-        userRepository.save(new User("user", "user@user.com", "password"));
-        userRepository.save(new User("anotherUser", "anotherUser@usercom", "password"));
 
         return StreamSupport
                 .stream(userRepository.findAll().spliterator(), Boolean.FALSE)
