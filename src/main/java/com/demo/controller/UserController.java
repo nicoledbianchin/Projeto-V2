@@ -4,10 +4,7 @@ import com.demo.domain.User;
 import com.demo.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,7 +24,22 @@ public class UserController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<User>> getAllUser() {
-        return ResponseEntity.ok().body(userService.getAll());
+    public List<User> findAllUsers() {
+        return userService.findAllUsers();
+    }
+
+    @GetMapping("/{name}")
+    public List<User> findByName(@PathVariable("name") String name){
+        return userService.findUserByName(name);
+    }
+
+    @GetMapping("/{id}")
+    public User findUserById(@PathVariable("id") Long id){
+        return userService.findUserById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteUserById(@PathVariable("id") Long id){
+        userService.deleteUserById(id);
     }
 }

@@ -20,25 +20,19 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    private List<User> findAllUsers(UserRepository userRepository){
-        return (List<User>) userRepository.findAll();
+    public List<User> findAllUsers() {
+        return userRepository.findAll();
     }
 
-    private List<User> findUserByName(String name){
+    public List<User> findUserByName(String name){
         return userRepository.findByName(name);
     }
 
-    private User findUserById(long id){
+    public User findUserById(long id){
         return userRepository.findById(id);
     }
 
-    private void deleteUserById(Long id){
+    public void deleteUserById(Long id){
         userRepository.deleteById(id);
-    }
-
-    public List<User> getAll() {
-        return StreamSupport
-                .stream(userRepository.findAll().spliterator(), Boolean.FALSE)
-                .collect(Collectors.toList());
     }
 }
