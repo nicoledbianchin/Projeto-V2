@@ -15,13 +15,18 @@ public class User {
     private String email;
     private String password;
 
+    public User(){
+    }
+
     public User (String name, String email, String password){
         this.name = name;
         this.email = email;
         this.password = password;
     }
 
-    public User(){
+    public User(String name, String email, String password, Long id){
+        this(name, email, password);
+        this.id = id;
     }
 
     public Long getId() {
