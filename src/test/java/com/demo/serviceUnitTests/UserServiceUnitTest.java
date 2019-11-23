@@ -24,7 +24,7 @@ public class UserServiceUnitTest {
     UserService userService;
 
     @Test
-    public void shouldReturnOkWhenSaveValidUser(){
+    public void shouldReturnOkWhenSaveValidUser() {
         User user = new User("name", "name@email.com", "password");
         UserService userService = new UserService(userRepository);
 
@@ -37,13 +37,24 @@ public class UserServiceUnitTest {
     }
 
     @Test
-    public void shouldReturnUserListWhenFindAllUsers(){
+    public void shouldReturnUserListWhenFindAllUsers() {
         User user = new User("name", "name@mail.com", "password");
         User anotherUser = new User("anotherName", "name@mail.com", "password");
 
         Mockito.when(userRepository.findAll()).thenReturn(Arrays.asList(user, anotherUser));
 
         List<User> userList = userService.findAllUsers();
+
+        Assert.assertEquals(user, userList.get(0));
+    }
+
+    @Test
+    public void shouldReturnUserListWhenFindUserByNameValid() {
+        User user = new User("name", "name@email.com", "password");
+
+        Mockito.when(userRepository.findByName("name")).thenReturn(Arrays.asList(user));
+
+        List<User> userList = userService.findUserByName("name");
 
         Assert.assertEquals(user, userList.get(0));
     }
