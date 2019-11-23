@@ -16,26 +16,23 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    private List<User> findAll(UserRepository r){
-        return (List<User>) userRepository.findAll();
-    }
-
-    private List<User> findByName(String name){
-        return userRepository.findByName(name);
-    }
-
-    private User findById(long id){
-        return userRepository.findById(id);
-    }
-
     public User save(User user){
         return userRepository.save(user);
     }
 
-    public List<User> getAll() {
+    public List<User> findAllUsers() {
+        return userRepository.findAll();
+    }
 
-        return StreamSupport
-                .stream(userRepository.findAll().spliterator(), Boolean.FALSE)
-                .collect(Collectors.toList());
+    public List<User> findUserByName(String name){
+        return userRepository.findByName(name);
+    }
+
+    public User findUserById(long id){
+        return userRepository.findById(id);
+    }
+
+    public void deleteUserById(Long id){
+        userRepository.deleteById(id);
     }
 }
