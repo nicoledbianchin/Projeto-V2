@@ -11,6 +11,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.Arrays;
+import java.util.List;
+
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceUnitTest {
 
@@ -32,4 +35,17 @@ public class UserServiceUnitTest {
         Assert.assertEquals(user.getEmail(), userExpected.getEmail());
         Assert.assertEquals(user.getPassword(), userExpected.getPassword());
     }
+
+    @Test
+    public void shouldReturnUserListWhenFindAllUsers(){
+        User user = new User("name", "name@mail.com", "password");
+        User anotherUser = new User("anotherName", "name@mail.com", "password");
+
+        Mockito.when(userRepository.findAll()).thenReturn(Arrays.asList(user, anotherUser));
+
+        List<User> userList = userService.findAllUsers();
+
+        Assert.assertEquals(user, userList.get(0));
+    }
+
 }
