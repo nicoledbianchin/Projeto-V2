@@ -29,11 +29,12 @@ public class UserServiceUnitTest {
         UserService userService = new UserService(userRepository);
 
         Mockito.when(userRepository.save(user)).thenReturn(user);
+
         User userExpected = userService.save(user);
 
-        Assert.assertEquals(user.getName(), userExpected.getName());
-        Assert.assertEquals(user.getEmail(), userExpected.getEmail());
-        Assert.assertEquals(user.getPassword(), userExpected.getPassword());
+        Assert.assertEquals(user, userExpected);
+
+        Mockito.verify(userRepository, Mockito.times(1));
     }
 
     @Test
@@ -46,6 +47,8 @@ public class UserServiceUnitTest {
         List<User> userList = userService.findAllUsers();
 
         Assert.assertEquals(user, userList.get(0));
+
+        Mockito.verify(userRepository, Mockito.times(1));
     }
 
     @Test
@@ -57,6 +60,21 @@ public class UserServiceUnitTest {
         List<User> userList = userService.findUserByName("name");
 
         Assert.assertEquals(user, userList.get(0));
+
+        Mockito.verify(userRepository, Mockito.times(1));
+    }
+
+    @Test
+    public void shouldReturnUserWhenFindByIdValid(){
+        User user = new User("name", "name@email.com", "password", 5L);
+
+        Mockito.when(userRepository.findById(5)).thenReturn(user);
+
+        User userExpected = userService.findUserById(5);
+
+        Assert.assertEquals(user, userExpected);
+
+        Mockito.verify(userRepository, Mockito.times(1));
     }
 
 }
