@@ -2,7 +2,6 @@ package com.demo.controller;
 
 import com.demo.domain.User;
 import com.demo.service.UserService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
