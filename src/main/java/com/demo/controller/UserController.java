@@ -2,7 +2,6 @@ package com.demo.controller;
 
 import com.demo.domain.User;
 import com.demo.service.UserService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
-    private UserService userService;
+    public UserService userService;
 
     public UserController(UserService service){
         this.userService = service;
