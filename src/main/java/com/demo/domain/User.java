@@ -15,13 +15,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank(message = "Por favor, informe seu nome.")
+//    @NotBlank(message = "Por favor, informe seu nome.")
     private String name;
 
-    @Email(message = "Por favor, informe um email válido.")
+//    @Email(message = "Por favor, informe um email válido.")
     private String email;
 
-    @Min(value = 6, message = "A senha deve ter no mínimo 6 caracteres.")
+//    @Min(value = 6, message = "A senha deve ter no mínimo 6 caracteres.")
     private String password;
 
     public User(){

@@ -2,12 +2,17 @@ package com.demo.controller;
 
 import com.demo.domain.User;
 import com.demo.service.UserService;
+import org.apache.coyote.Response;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping(value = "/user")
 public class UserController {
 
     public UserService userService;
@@ -16,9 +21,10 @@ public class UserController {
         this.userService = service;
     }
 
-    @PostMapping("/saveUser")
-    public void save(@RequestBody User user){
-        userService.save(user);
+    @PostMapping("/save")
+    public ResponseEntity<?> save(@RequestBody User user){
+        User userCreated = userService.save(user);
+        return ResponseEntity.status(HttpStatus.OK).body(userCreated);
     }
 
     @GetMapping("/")
