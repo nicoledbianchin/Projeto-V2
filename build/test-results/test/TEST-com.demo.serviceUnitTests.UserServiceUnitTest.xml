@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.demo.serviceUnitTests.UserServiceUnitTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-11-23T17:09:12" hostname="LAPTOP-OFE1PJK2" time="2.143">
-  <properties/>
-  <testcase name="shouldReturnOkWhenSaveValidUser" classname="com.demo.serviceUnitTests.UserServiceUnitTest" time="2.143"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
